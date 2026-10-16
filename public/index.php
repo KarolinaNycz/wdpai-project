@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$message = "Hi There! Let's start!";
+$message = "Hi There! Let's start! Let's go!";
 ?>
 <!doctype html>
 <html lang="en">
