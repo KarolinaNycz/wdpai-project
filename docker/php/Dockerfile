@@ -35,3 +35,5 @@ RUN { \
     } > /usr/local/etc/php/conf.d/mealplanner.ini
 
 COPY . .
+
+RUN composer dump-autoload --no-interaction
