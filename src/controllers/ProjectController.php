@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/AppController.php';
+namespace App\Controller;
 
 final class ProjectController extends AppController
 {
@@ -10,6 +10,11 @@ final class ProjectController extends AppController
     {
         $this->render('projects', [
             'pageTitle' => 'Projekty',
+            'projects' => [
+                ['id' => 1, 'name' => 'Aplikacja mobilna', 'status' => 'W trakcie'],
+                ['id' => 2, 'name' => 'Nowa strona WWW', 'status' => 'Planowany'],
+                ['id' => 3, 'name' => 'Panel klienta', 'status' => 'Zakończony'],
+            ],
         ]);
     }
 
@@ -18,6 +23,7 @@ final class ProjectController extends AppController
         $this->render('project', [
             'pageTitle' => 'Szczegóły projektu',
             'projectId' => $id,
+            'projectName' => 'Aplikacja mobilna',
         ]);
     }
 }

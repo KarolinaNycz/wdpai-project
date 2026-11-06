@@ -6,9 +6,24 @@
     <title><?= htmlspecialchars($pageTitle) ?></title>
 </head>
 <body>
+    <header>
+        <nav aria-label="Główna nawigacja">
+            <a href="/">ProjectFlow</a>
+            <a href="/dashboard">Dashboard</a>
+        </nav>
+    </header>
     <main>
-        <h1>Strona do prezentacji listy wszystkich projektów</h1>
-        <!-- TODO: Lista projektów wyświetlona w pętli -->
+        <section aria-labelledby="projects-heading">
+            <h1 id="projects-heading">Twoje projekty</h1>
+            <?php foreach ($projects as $project): ?>
+                <article>
+                    <h2><?= htmlspecialchars($project['name']) ?></h2>
+                    <p>Status: <?= htmlspecialchars($project['status']) ?></p>
+                    <a href="/projects/<?= $project['id'] ?>">Zobacz szczegóły</a>
+                </article>
+            <?php endforeach; ?>
+        </section>
     </main>
+    <footer><p>ProjectFlow</p></footer>
 </body>
 </html>

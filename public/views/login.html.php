@@ -8,8 +8,17 @@
 </head>
 <body>
     <main>
-        <h1>Dashboard</h1>
-        <p>Panel dashboard działa poprawnie!</p>
+        <section>
+            <h1><?= htmlspecialchars($formHeading) ?></h1>
+            <form action="/dashboard" method="get">
+                <label for="email">Adres e-mail</label>
+                <input id="email" name="email" type="email" required>
+                <label for="password">Hasło</label>
+                <input id="password" name="password" type="password" required>
+                <button type="submit">Zaloguj się</button>
+            </form>
+            <a href="/">Wróć na stronę główną</a>
+        </section>
     </main>
 </body>
 </html>

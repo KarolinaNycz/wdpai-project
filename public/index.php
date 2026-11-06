@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-require_once dirname(__DIR__) . '/src/controllers/DefaultController.php';
-require_once dirname(__DIR__) . '/src/controllers/ProjectController.php';
-require_once dirname(__DIR__) . '/Routing.php';
-require_once dirname(__DIR__) . '/src/controllers/DashboardController.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+use App\Controller\DashboardController;
+use App\Controller\DefaultController;
+use App\Controller\ProjectController;
+use App\Routing;
 
 $routing = new Routing();
 
-// TU BĘDZIEMY DEFINIOWAĆ WSZYSTKIE TRASY WYSTĘPUJĄCE W NASZYM PROJEKCIE
+$routing->get('/', DefaultController::class, 'index');
+$routing->get('/login', DashboardController::class, 'login');
+$routing->get('/dashboard', DashboardController::class, 'index');
 $routing->get('/projects', ProjectController::class, 'index');
 $routing->get('/projects/{id}', ProjectController::class, 'show');
-$routing->get('/', DefaultController::class, 'index');
-$routing->get('/login', DashboardController::class, 'index');
 
 $routeFound = $routing->dispatch(
     $_SERVER['REQUEST_METHOD'],

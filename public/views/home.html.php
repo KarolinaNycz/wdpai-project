@@ -6,9 +6,19 @@
     <title><?= htmlspecialchars($pageTitle) ?></title>
 </head>
 <body>
+    <header>
+        <nav aria-label="Główna nawigacja">
+            <a href="/">ProjectFlow</a>
+            <a href="/login">Zaloguj się</a>
+        </nav>
+    </header>
     <main>
-        <h1>Strona główna</h1>
-        <a href="/projects">Zobacz projekty</a>
+        <section>
+            <h1><?= htmlspecialchars($heading) ?></h1>
+            <p>Planuj pracę, kontroluj postęp i przeglądaj najważniejsze informacje o projektach.</p>
+            <a href="/dashboard">Przejdź do dashboardu</a>
+        </section>
     </main>
+    <footer><p>ProjectFlow</p></footer>
 </body>
 </html>

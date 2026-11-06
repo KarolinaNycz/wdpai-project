@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/AppController.php';
-
+namespace App\Controller;
 
 final class DefaultController extends AppController
 {
     public function index(): void
     {
         $this->render('home', [
-            'pageTitle' => 'Moja aplikacja',
+            'pageTitle' => 'ProjectFlow',
+            'heading' => 'Zarządzaj projektami w jednym miejscu',
         ]);
     }
 

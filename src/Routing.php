@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App;
+
+use App\Controller\AppController;
+
 final class Routing
 {
     private array $routes = [];
@@ -11,17 +15,8 @@ final class Routing
         $this->add('GET', $path, $controller, $action);
     }
 
-    public function post(string $path, string $controller, string $action): void
+    private function add(string $method, string $path, string $controller, string $action): void
     {
-        $this->add('POST', $path, $controller, $action);
-    }
-
-    private function add(
-        string $method,
-        string $path,
-        string $controller,
-        string $action,
-    ): void {
         $this->routes[] = [
             'method' => $method,
             'pattern' => $this->createPattern($path),
@@ -30,11 +25,6 @@ final class Routing
         ];
     }
 
-	/* 
-	Funkcja dzieli ścieżkę na fragmenty. Zwykłe fragmenty pozostawia bez zmian, 
-	a fragment zapisany w klamrach, na przykład {id}, zamienia na nazwany 
-	parametr przyjmujący cyfry. Następnie ponownie składa ścieżkę w wyrażenie regularne.
-	*/
     private function createPattern(string $path): string
     {
         $parts = explode('/', $path);
@@ -58,11 +48,7 @@ final class Routing
         $path = parse_url($uri, PHP_URL_PATH) ?: '/';
 
         foreach ($this->routes as $route) {
-            if ($route['method'] !== $method) {
-                continue;
-            }
-
-            if (!preg_match($route['pattern'], $path, $matches)) {
+            if ($route['method'] !== $method || !preg_match($route['pattern'], $path, $matches)) {
                 continue;
             }
 
@@ -71,10 +57,8 @@ final class Routing
                 static fn (int|string $key): bool => is_string($key),
                 ARRAY_FILTER_USE_KEY,
             );
-
             $parameters = array_map(
-                static fn (string $value): int|string =>
-                    ctype_digit($value) ? (int) $value : $value,
+                static fn (string $value): int|string => ctype_digit($value) ? (int) $value : $value,
                 $parameters,
             );
 
