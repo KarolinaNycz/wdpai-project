@@ -70,6 +70,10 @@ body {
     text-decoration: none;
 }
 
+.site-nav__links a:hover {
+    color: var(--color-surface);
+}
+
 .site-nav__links .is-active {
     border-color: var(--color-surface);
     color: var(--color-surface);
@@ -156,6 +160,13 @@ body {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
     padding: var(--space-md);
+    transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.project-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 0.5rem 1.5rem rgb(21 34 56 / 14%);
+    transform: translateY(-0.1875rem);
 }
 
 .project-card h3 {
@@ -185,4 +196,54 @@ body {
     font-size: 0.875rem;
     font-weight: 700;
     text-decoration: none;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    border-radius: var(--radius-sm);
+    outline: 0.1875rem solid var(--color-primary);
+    outline-offset: 0.25rem;
+}
+
+.site-header a:focus-visible {
+    outline-color: var(--color-surface);
+}
+
+@media (max-width: 48rem) {
+    .site-nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding-bottom: var(--space-sm);
+        padding-top: var(--space-sm);
+    }
+
+    .site-nav__links {
+        gap: var(--space-sm);
+        justify-content: space-between;
+        overflow-x: auto;
+        padding-bottom: var(--space-xs);
+        width: 100%;
+    }
+
+    .dashboard {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .dashboard__heading h1 {
+        font-size: 1.75rem;
+    }
+
+    .summary-grid,
+    .project-grid {
+        gap: var(--space-sm);
+        grid-template-columns: 1fr;
+    }
+
+    .summary-grid {
+        margin-bottom: var(--space-lg);
+    }
 }
