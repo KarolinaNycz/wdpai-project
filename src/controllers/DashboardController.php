@@ -12,6 +12,11 @@ final class DashboardController extends AppController
             'pageTitle' => 'Dashboard',
             'activeProjects' => 2,
             'completedProjects' => 1,
+            'recentProjects' => [
+                ['id' => 1, 'name' => 'Aplikacja mobilna', 'status' => 'W trakcie', 'statusClass' => 'in-progress'],
+                ['id' => 2, 'name' => 'Nowa strona WWW', 'status' => 'Planowany', 'statusClass' => 'planned'],
+                ['id' => 3, 'name' => 'Panel klienta', 'status' => 'Zakończony', 'statusClass' => 'completed'],
+            ],
         ]);
     }
 
